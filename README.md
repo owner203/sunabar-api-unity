@@ -2,7 +2,7 @@
 Using sunabar API in Unity
 
 ## How to use this demo
-1. Make sure you already have a つかいわけ口座 in sunabar
+1. Make sure you already have a つかいわけ口座
 2. Start a new 2D project
 3. Close the project
 4. Replace the folder `Assets`
