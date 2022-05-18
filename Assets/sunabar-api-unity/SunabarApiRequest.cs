@@ -13,8 +13,11 @@ public class SunabarApiRequest : MonoBehaviour
         request.ContentType = "application/json";
         request.Headers.Add("x-access-token", sunabarApiToken);
         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-        StreamReader reader = new StreamReader(response.GetResponseStream());
-        string json = reader.ReadToEnd();
+        string json;
+        using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+        {
+            json = reader.ReadToEnd();
+        }
         return JsonUtility.FromJson<JsonMapAccountList>(json);
     }
 
@@ -25,8 +28,11 @@ public class SunabarApiRequest : MonoBehaviour
         request.ContentType = "application/json";
         request.Headers.Add("x-access-token", sunabarApiToken);
         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-        StreamReader reader = new StreamReader(response.GetResponseStream());
-        string json = reader.ReadToEnd();
+        string json;
+        using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+        {
+            json = reader.ReadToEnd();
+        }
         return JsonUtility.FromJson<JsonMapAccountBalances>(json);
     }
 
@@ -43,9 +49,12 @@ public class SunabarApiRequest : MonoBehaviour
             writer.Write(postData);
         }
         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-        StreamReader reader = new StreamReader(response.GetResponseStream());
-        string json = reader.ReadToEnd();
-        json = json.Replace("\"currencyName\"", ",\"currencyName\""); //バグ対応
+        string json;
+        using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+        {
+            json = reader.ReadToEnd();
+            json = json.Replace("\"currencyName\"", ",\"currencyName\""); //バグ対応
+        }
         return JsonUtility.FromJson<JsonMapDoTransferRecv>(json);
     }
 }
