@@ -1,5 +1,5 @@
 # sunabar-api-unity
-Use sunabar API in Unity
+A demo to use sunabar API in Unity
 
 ## How to use this demo
 1. Make sure you already have a つかいわけ口座
