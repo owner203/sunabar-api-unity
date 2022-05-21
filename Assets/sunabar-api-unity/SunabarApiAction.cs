@@ -43,4 +43,10 @@ public class SunabarApiAction : MonoBehaviour
         JsonMapDoTransferRecv json = SunabarApiRequest.DoTransfer(sunabarApiToken, GetMainAccountId(), GetAppAccountId(), paymentAmount);
         Debug.Log(paymentAmount + " transferred");
     }
+
+    public static void UndoTransfer(string paymentAmount)
+    {
+        JsonMapDoTransferRecv json = SunabarApiRequest.DoTransfer(sunabarApiToken, GetAppAccountId(), GetMainAccountId(), paymentAmount);
+        Debug.Log(paymentAmount + " refunded");
+    }
 }
